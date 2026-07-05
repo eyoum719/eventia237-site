@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-cream text-forest-900 font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    @apply bg-gold-400 text-forest-900;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .container-px {
+    @apply px-5 sm:px-8 lg:px-12;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .gold-divider {
+    background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-whatsapp px-7 py-3.5 font-sans text-sm font-semibold text-white shadow-soft transition-all duration-300 hover:bg-whatsappDark hover:shadow-card hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold-400 px-7 py-3.5 font-sans text-sm font-semibold text-forest-900 shadow-gold transition-all duration-300 hover:bg-gold-300 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-forest-500/30 bg-white/70 px-7 py-3.5 font-sans text-sm font-semibold text-forest-700 backdrop-blur transition-all duration-300 hover:border-forest-500 hover:bg-white hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .section-eyebrow {
+    @apply mb-3 inline-flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-gold-600;
+  }
+
+  .section-title {
+    @apply font-display text-3xl font-semibold leading-tight tracking-tightest text-forest-900 sm:text-4xl lg:text-5xl;
+  }
+
+  .card-soft {
+    @apply rounded-3xl bg-white shadow-soft ring-1 ring-forest-900/5 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-card;
+  }
+}
+
+.hidden-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hidden-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
