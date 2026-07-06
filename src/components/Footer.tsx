@@ -1,4 +1,4 @@
-import { Crown, MapPin, Phone, Clock } from 'lucide-react';
+import { MapPin, Phone, Clock } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { WHATSAPP_BASE, waLink } from '../lib/supabase';
 
@@ -18,12 +18,12 @@ export function Footer() {
       <div className="container-px mx-auto max-w-7xl py-16 sm:py-20">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <a href="#accueil" className="flex items-center gap-2.5">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-forest-500">
-                <Crown className="h-5 w-5 text-gold-400" strokeWidth={1.75} />
+            <a href="#accueil" className="flex items-baseline gap-1.5">
+              <span className="font-display text-2xl font-semibold tracking-tight text-violet-400">
+                Eventia
               </span>
-              <span className="font-display text-2xl font-semibold tracking-tight">
-                Eventia <span className="text-gold-400">237</span>
+              <span className="font-display text-2xl font-semibold tracking-tight text-orange-500">
+                237
               </span>
             </a>
             <p className="mt-5 max-w-md font-sans text-sm leading-relaxed text-cream/70">

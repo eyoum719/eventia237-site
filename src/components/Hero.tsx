@@ -1,26 +1,49 @@
+import { useEffect, useState } from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { waLink } from '../lib/supabase';
 
+const SLIDES = [
+  'https://images.pexels.com/photos/2698725/pexels-photo-2698725.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  'https://images.pexels.com/photos/169190/pexels-photo-169190.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  'https://images.pexels.com/photos/5638732/pexels-photo-5638732.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  'https://images.pexels.com/photos/2306281/pexels-photo-2306281.jpeg?auto=compress&cs=tinysrgb&w=1600',
+];
+
 export function Hero() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((i) => (i + 1) % SLIDES.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section id="accueil" className="relative isolate flex min-h-[100svh] items-center overflow-hidden">
       <div className="absolute inset-0 -z-10">
-        <img
-          src="https://images.pexels.com/photos/2698725/pexels-photo-2698725.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          alt="Réception élégamment décorée à Douala"
-          className="h-full w-full object-cover"
-          fetchPriority="high"
-        />
+        {SLIDES.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt={`Scène événementielle élégante à Douala ${i + 1}`}
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
+              i === index ? 'opacity-100' : 'opacity-0'
+            }`}
+            loading={i === 0 ? 'eager' : 'lazy'}
+            fetchPriority={i === 0 ? 'high' : 'low'}
+          />
+        ))}
         <div className="absolute inset-0 bg-gradient-to-b from-forest-900/70 via-forest-900/55 to-forest-900/80" />
         <div className="absolute inset-0 bg-gradient-to-r from-forest-900/60 to-transparent" />
       </div>
 
       <div className="container-px mx-auto w-full max-w-7xl pt-24 pb-16 sm:pt-28">
         <div className="max-w-2xl">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold-400/40 bg-white/10 px-4 py-1.5 backdrop-blur-sm animate-fade-in">
-            <Sparkles className="h-3.5 w-3.5 text-gold-300" />
-            <span className="font-sans text-xs font-medium uppercase tracking-[0.2em] text-gold-200">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-300/40 bg-violet-500/15 px-4 py-1.5 backdrop-blur-sm animate-fade-in">
+            <Sparkles className="h-3.5 w-3.5 text-orange-400" />
+            <span className="font-sans text-xs font-medium uppercase tracking-[0.2em] text-violet-100">
               Douala • Location événementielle
             </span>
           </div>
@@ -28,7 +51,7 @@ export function Hero() {
           <h1 className="font-display text-4xl font-semibold leading-[1.05] tracking-tightest text-cream sm:text-5xl lg:text-6xl text-balance animate-fade-up">
             Location de Matériel
             <br />
-            <span className="text-gold-400">Événementiel</span> à Douala
+            <span className="text-orange-400">Événementiel</span> à Douala
           </h1>
 
           <p className="mt-6 max-w-xl font-sans text-base leading-relaxed text-cream/85 sm:text-lg animate-fade-up [animation-delay:120ms]">
@@ -41,12 +64,12 @@ export function Hero() {
               href={waLink('Bonjour Eventia 237, je souhaite réserver du matériel événementiel pour un événement à Douala. Pouvez-vous m\'aider ?')}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary text-base"
+              className="btn-orange text-base"
             >
               <WhatsAppIcon className="h-5 w-5" />
               Réserver sur WhatsApp
             </a>
-            <a href="#packs" className="btn-outline text-base text-cream border-cream/40 hover:border-cream hover:bg-white/10">
+            <a href="#packs" className="btn-hero-secondary text-base">
               Découvrir nos packs
               <ArrowRight className="h-4 w-4" />
             </a>
@@ -59,7 +82,7 @@ export function Hero() {
               { stat: '8+', label: 'Quartiers livrés' },
             ].map((item) => (
               <div key={item.label}>
-                <div className="font-display text-3xl font-semibold text-gold-400 sm:text-4xl">{item.stat}</div>
+                <div className="font-display text-3xl font-semibold text-orange-400 sm:text-4xl">{item.stat}</div>
                 <div className="mt-1 font-sans text-xs font-medium uppercase tracking-wider text-cream/70 sm:text-sm">
                   {item.label}
                 </div>
@@ -69,14 +92,25 @@ export function Hero() {
         </div>
       </div>
 
+      <div className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 items-center gap-2 sm:flex">
+        {SLIDES.map((_, i) => (
+          <span
+            key={i}
+            className={`h-1.5 rounded-full transition-all duration-500 ${
+              i === index ? 'w-7 bg-orange-400' : 'w-1.5 bg-cream/40'
+            }`}
+          />
+        ))}
+      </div>
+
       <a
         href="#apropos"
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 text-cream/60 transition-colors hover:text-cream sm:flex"
+        className="absolute bottom-6 right-6 hidden flex-col items-center gap-1 text-cream/60 transition-colors hover:text-cream lg:flex"
         aria-label="Faire défiler vers le bas"
       >
         <span className="font-sans text-[10px] uppercase tracking-[0.3em]">Découvrir</span>
         <span className="flex h-9 w-5 justify-center rounded-full border border-cream/40 pt-1.5">
-          <span className="h-1.5 w-1 animate-bounce rounded-full bg-gold-400" />
+          <span className="h-1.5 w-1 animate-bounce rounded-full bg-orange-400" />
         </span>
       </a>
     </section>

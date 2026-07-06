@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, Crown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { waLink } from '../lib/supabase';
 
@@ -38,12 +38,12 @@ export function Navbar() {
       }`}
     >
       <nav className="container-px mx-auto flex h-16 max-w-7xl items-center justify-between sm:h-20">
-        <a href="#accueil" className="group flex items-center gap-2.5" aria-label="Eventia 237 - Accueil">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-forest-500 shadow-soft transition-transform duration-300 group-hover:scale-105 sm:h-10 sm:w-10">
-            <Crown className="h-5 w-5 text-gold-400" strokeWidth={1.75} />
+        <a href="#accueil" className="group flex items-baseline gap-1.5" aria-label="Eventia 237 - Accueil">
+          <span className="font-display text-xl font-semibold tracking-tight text-violet-500 transition-colors duration-300 group-hover:text-violet-600 sm:text-2xl">
+            Eventia
           </span>
-          <span className="font-display text-xl font-semibold tracking-tight text-forest-900 sm:text-2xl">
-            Eventia <span className="text-gold-500">237</span>
+          <span className="font-display text-xl font-semibold tracking-tight text-orange-500 transition-colors duration-300 group-hover:text-orange-600 sm:text-2xl">
+            237
           </span>
         </a>
 
@@ -65,7 +65,7 @@ export function Navbar() {
             href={waLink('Bonjour Eventia 237, je souhaite organiser un événement à Douala et j\'aimerais avoir des informations sur vos packs.')}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary"
+            className="btn-orange"
           >
             <WhatsAppIcon className="h-4 w-4" />
             Réserver
@@ -106,7 +106,7 @@ export function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setOpen(false)}
-              className="btn-primary w-full"
+              className="btn-orange w-full"
             >
               <WhatsAppIcon className="h-4 w-4" />
               Réserver sur WhatsApp

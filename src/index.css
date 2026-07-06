@@ -56,6 +56,18 @@
     @apply inline-flex items-center justify-center gap-2 rounded-full border border-forest-500/30 bg-white/70 px-7 py-3.5 font-sans text-sm font-semibold text-forest-700 backdrop-blur transition-all duration-300 hover:border-forest-500 hover:bg-white hover:-translate-y-0.5 active:translate-y-0;
   }
 
+  .btn-orange {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-orange-500 px-6 py-3.5 font-sans text-sm font-semibold text-white shadow-orange transition-all duration-300 hover:bg-orange-600 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-violet {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-violet-500 px-7 py-3.5 font-sans text-sm font-semibold text-white shadow-violet transition-all duration-300 hover:bg-violet-600 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-hero-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-violet-300/50 bg-violet-500/15 px-7 py-3.5 font-sans text-sm font-semibold text-violet-100 backdrop-blur transition-all duration-300 hover:border-violet-300 hover:bg-violet-500/25 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
   .section-eyebrow {
     @apply mb-3 inline-flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-gold-600;
   }
