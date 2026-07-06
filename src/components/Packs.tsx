@@ -6,6 +6,7 @@ import { useReveal } from '../hooks/useReveal';
 type Pack = {
   name: string;
   capacity: string;
+  description: string;
   price: number;
   oldPrice?: number;
   includes: string[];
@@ -16,26 +17,32 @@ type Pack = {
 
 const PACKS: Pack[] = [
   {
-    name: 'Pack Baptême',
-    capacity: '50 personnes',
+    name: 'Pack Baptême & Naissance',
+    capacity: 'Idéal pour célébrer vos petits anges',
+    description:
+      'Une décoration douce et épurée pour célébrer vos petits anges. Comprend des chaises adaptées pour enfants, nappages soignés et une ambiance lumineuse chaleureuse.',
     price: 45000,
     oldPrice: 55000,
-    includes: ['Chaises simples', 'Tables rectangulaires', 'Nappes'],
+    includes: ['Chaises adaptées pour enfants', 'Nappages soignés', 'Ambiance lumineuse chaleureuse'],
     image: 'https://images.pexels.com/photos/5796395/pexels-photo-5796395.jpeg?auto=compress&cs=tinysrgb&w=800',
     badge: 'Promo',
   },
   {
-    name: 'Pack Conférence',
-    capacity: '100 personnes',
+    name: 'Pack Anniversaire & Fête Privée',
+    capacity: 'Le kit idéal pour souffler une bougie',
+    description:
+      "Le kit idéal pour souffler une bougie de plus en toute élégance. Tables rondes ou rectangulaires, chemins de table colorés (or ou vert), vaisselle complète et couverts haut de gamme.",
     price: 120000,
-    includes: ['Chaises capitonnées', 'Tables rondes', 'Sonorisation de base'],
-    image: 'https://images.pexels.com/photos/2833077/pexels-photo-2833077.jpeg?auto=compress&cs=tinysrgb&w=800',
+    includes: ['Tables rondes ou rectangulaires', 'Chemins de table colorés (or ou vert)', 'Vaisselle complète et couverts haut de gamme'],
+    image: 'https://images.pexels.com/photos/169190/pexels-photo-169190.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
-    name: 'Pack Mariage Prestige',
-    capacity: '150 personnes',
+    name: 'Pack Mariage, Dot & Réception Chic',
+    capacity: 'Le prestige pour votre grand jour à Douala',
+    description:
+      "Le prestige pour votre grand jour à Douala. Tentes d'honneur drapées, chaises de luxe ou acryliques transparentes, vaisselle supérieure étincelante et tapis rouge majestueux.",
     price: 350000,
-    includes: ['Chaises acryliques', 'Chapiteau', 'Couverts standard', 'Tapis rouge'],
+    includes: ["Tentes d'honneur drapées", 'Chaises de luxe ou acryliques transparentes', 'Vaisselle supérieure étincelante', 'Tapis rouge majestueux'],
     image: 'https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=800',
     badge: 'Prestige',
     featured: true,
@@ -58,10 +65,10 @@ export function Packs() {
         >
           <span className="section-eyebrow justify-center">Nos Packs phares</span>
           <h2 className="section-title">
-            Des packs <span className="text-gold-500">clés en main</span> pour chaque événement
+            Des packs <span className="text-violet-500">clés en main</span> pour chaque événement
           </h2>
           <p className="mt-5 font-sans text-base text-forest-700 sm:text-lg">
-            Des formacles complètes, sans caution, livrées et installées partout à Douala.
+            Des formules complètes, sans caution, livrées et installées partout à Douala.
             Réservez en un message WhatsApp.
           </p>
         </div>
@@ -89,25 +96,31 @@ export function Packs() {
                       pack.featured
                         ? 'bg-violet-500 text-white'
                         : 'bg-orange-500 text-white'
-                    }`
-                  }>
+                    }`}
+                  >
                     {pack.featured ? <Crown className="h-3.5 w-3.5" /> : <Sparkles className="h-3.5 w-3.5" />}
                     {pack.badge}
                   </span>
                 )}
-                <div className="absolute bottom-4 left-4 text-cream">
-                  <h3 className="font-display text-2xl font-semibold">{pack.name}</h3>
-                  <p className="mt-0.5 font-sans text-xs uppercase tracking-wider text-cream/85">
+                <div className="absolute bottom-4 left-4 right-4 text-cream">
+                  <h3 className="font-display text-xl font-semibold leading-snug sm:text-2xl">
+                    {pack.name}
+                  </h3>
+                  <p className="mt-1 font-sans text-xs uppercase tracking-wider text-cream/85">
                     {pack.capacity}
                   </p>
                 </div>
               </div>
 
               <div className="flex flex-1 flex-col p-6">
-                <ul className="flex-1 space-y-3">
+                <p className="font-sans text-sm leading-relaxed text-forest-700">
+                  {pack.description}
+                </p>
+
+                <ul className="mt-5 flex-1 space-y-3">
                   {pack.includes.map((item) => (
                     <li key={item} className="flex items-center gap-3 font-sans text-sm text-forest-800">
-                      <span className="flex h-5 w-5 flex-none items-center justify-center rounded-full bg-forest-500/10 text-forest-500">
+                      <span className="flex h-5 w-5 flex-none items-center justify-center rounded-full bg-violet-500/10 text-violet-500">
                         <Check className="h-3 w-3" strokeWidth={3} />
                       </span>
                       {item}
